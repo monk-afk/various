@@ -27,7 +27,14 @@ while true do
 
     if file then
       file:close()
-      dofile(path)(context, params)
+
+      local status, err = pcall(function()
+        return dofile(path)(context, params)
+      end)
+
+      if not status then
+        print("Error:", err)
+      end
     end
   end
 end
