@@ -1,15 +1,17 @@
-        ---------------
-  --==[[  CLI Params  ]]==--
+       ----------------
+  --==[[  CLI Parser  ]]==--
   --==[[ © 2024 monk  ]]==--
-        ---------------
---[[
-  parses command line parameters to build a table
-    containing both a numeric and associative index.
-    this allows evaluating the table using any iterator method
+       ----------------
+--[[  Provides a method to extract and handle arguments
 
-  UNIX-type arguments separated by spaces, with or without leading hyphen:
-    - for valued associatives, use 'param=value'
-    - standalone arguments are boolean true, and numerically indexed
+Argument handling:
+  - String and numeric assignments as their respective types
+  - Standalone arguments (e.g., arg2 and -a) as booleans
+
+Sets clip[0] to the running script's file name and clip[file] to its path
+
+Keeps positional arguments as a numeric array and associate keywords with values,
+  providing access to both sequential and associative data.
 
 Example:
 
@@ -19,8 +21,8 @@ The table produced:
 
   clip = {
     "arg1", "arg2", "num", "a", "889", -- numeric array first
-    [0] = "clip.lua",                  -- clip[0] always is the file name
-    ["clip.lua"] = "/home/user/lua/",  -- gives the path
+    [0] = "clip.lua",                  -- clip[0] is the file name
+    ["clip.lua"] = "/home/user/lua/",  -- clip[file] gives the path
     arg1 = "the long string",          -- strings stay strings
     arg2 = true, a = true,             -- standalone args become boolean
     num = 9,                           -- numbers stay numbers if associated
@@ -28,18 +30,16 @@ The table produced:
   }
 ]]
 
-------------------------------------------------------------
-
+--[[ clip.lua ]]-------------------------------------------
+-- #!/usr/bin/lua -- add to $PATH to call required("clip")
 local clip = {}
-
-  -- assign the file name and path to -1 and 0
+  -- Assign the file name and path
 clip[0] = string.gsub(arg[0], "^([%w/]-/?)([%w%.]+)$",
-  function(path, file)
-    clip[file] = path -- makes key = val
-    return file, path -- makes index[n]
-  end)
-
-  -- evaluate argumets after the file
+    function(path, file)
+      clip[file] = path
+      return file, path
+    end)
+  -- Evaluate argumets after the file
 for p = 1, #arg do
   clip[p] = string.gsub(arg[p], "%-*([%w-]+)=?([%s%S]*)",
     function(param, val)
@@ -48,61 +48,65 @@ for p = 1, #arg do
     end)
 end
 
-------------------------------------------------------------
+return clip
+--[[ END OF FILE ]]
+-----------------------------------------------------------
+--[[ Usage examples
 
---[[ Examples ]]
+  -- Filename and Path (if included) of the invoked script
+    local filename = clip[0]
+    local path = clip[filename]
+    print(filename, path)
 
-  -- iterate through pairs, ipairs, or array
-for k, v in pairs(clip) do
-  print("k,v in pairs ", k, v)
-end
+  -- Associated keys, such as --param=value or --hyphen-param (without value)
+    local value = clip.param or clip["hyphen-param"]
 
-for _,v in ipairs(clip) do
-  print("v in ipairs", v)
-end
+    for k, v in pairs(clip) do
+      local param = k
+      local value = v
+      print(param, value)
+    end
 
-for v = 1, #clip do
-  print("v = 1,#clip", v, clip[v])
-end
+  -- positional arguments, 
+    local value = clip[1]
 
-  -- get path (if included) and filename:
-print(
-  "File name", clip[0]
-)
-print(
-  "Full path", clip[clip[0]]
-)
+    for i,v in ipairs(clip) do
+      local index = i
+      local value = v
+      print(index, value)
+    end
 
-  -- table.concat will only concatenate the array 
-print(
-  "table.concat", table.concat(clip, ", ")
-)
+    for i = 1, #clip do
+      local value = clip[i]
+      print(value)
+    end
 
---[[
-$ lua ~/lua/clip.lua --arg1="the long string" arg2 num=9 -a 889
-		k,v in pairs	1	arg1
-		k,v in pairs	2	arg2
-		k,v in pairs	3	num
-		k,v in pairs	4	a
-		k,v in pairs	0	clip.lua
-		k,v in pairs	clip.lua	/home/user/lua/
-		k,v in pairs	889	true
-		k,v in pairs	a	true
-		k,v in pairs	arg1	the long string
-		k,v in pairs	5	889
-		k,v in pairs	arg2	true
-		k,v in pairs	num	9
-		v in ipairs		1
-		v in ipairs		2
-		v in ipairs		3
-		v in ipairs		4
-		v in ipairs		5
-		v = 1,#clip		1	arg1
-		v = 1,#clip		2	arg2
-		v = 1,#clip		3	num
-		v = 1,#clip		4	a
-		v = 1,#clip		5	889
-		File name			clip.lua
-		Full path			/home/user/lua/
-		table.concat	arg1, arg2, num, a, 889
+  -- concatenate the array, omitting the filename: 
+    local conc = table.concat(clip, ", ")
+    print(conc)
 ]]
+
+
+--==[[================================================================================]]==--
+--==[[ MIT License                                                                    ]]==--
+--==[[                                                                                ]]==--
+--==[[ Copyright © 2024  monk                                                         ]]==--
+--==[[                                                                                ]]==--
+--==[[ Permission is hereby granted, free of charge, to any person obtaining a copy   ]]==--
+--==[[ of this software and associated documentation files (the "Software"), to deal  ]]==--
+--==[[ in the Software without restriction, including without limitation the rights   ]]==--
+--==[[ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell      ]]==--
+--==[[ copies of the Software, and to permit persons to whom the Software is          ]]==--
+--==[[ furnished to do so, subject to the following conditions:                       ]]==--
+--==[[                                                                                ]]==--
+--==[[ The above copyright notice and this permission notice shall be included in all ]]==--
+--==[[ copies or substantial portions of the Software.                                ]]==--
+--==[[                                                                                ]]==--
+--==[[ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR     ]]==--
+--==[[ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,       ]]==--
+--==[[ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE    ]]==--
+--==[[ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER         ]]==--
+--==[[ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,  ]]==--
+--==[[ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE  ]]==--
+--==[[ SOFTWARE.                                                                      ]]==--
+--==[[================================================================================]]==--
