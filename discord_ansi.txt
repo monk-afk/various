@@ -1,0 +1,29 @@
+![image](https://github.com/user-attachments/assets/478efa0f-f7c6-47e7-9c9d-91b63cc73a72)
+
+
+codeblock for ANSI formatting in discord messages
+
+
+```ansi
+[1;1mmonk[0m | [2;1mmonk[0m | [4;1mmonk[0m
+[1;2mmonk[0m | [2;2mmonk[0m | [4;2mmonk[0m
+[1;4mmonk[0m | [2;4mmonk[0m 
+
+[1;30mmonk[0m | [2;30mmonk[0m | [4;30mmonk[0m
+[1;31mmonk[0m | [2;31mmonk[0m | [4;31mmonk[0m
+[1;32mmonk[0m | [2;32mmonk[0m | [4;32mmonk[0m
+[1;33mmonk[0m | [2;33mmonk[0m | [4;33mmonk[0m
+[1;34mmonk[0m | [2;34mmonk[0m | [4;34mmonk[0m
+[1;35mmonk[0m | [2;35mmonk[0m | [4;35mmonk[0m
+[1;36mmonk[0m | [2;36mmonk[0m | [4;36mmonk[0m
+[1;37mmonk[0m | [2;37mmonk[0m | [4;37mmonk[0m
+
+[1;40mmonk[0m | [2;40mmonk[0m | [4;40mmonk[0m
+[1;41mmonk[0m | [2;41mmonk[0m | [4;41mmonk[0m
+[1;42mmonk[0m | [2;42mmonk[0m | [4;42mmonk[0m
+[1;43mmonk[0m | [2;43mmonk[0m | [4;43mmonk[0m
+[1;44mmonk[0m | [2;44mmonk[0m | [4;44mmonk[0m
+[1;45mmonk[0m | [2;45mmonk[0m | [4;45mmonk[0m
+[1;46mmonk[0m | [2;46mmonk[0m | [4;46mmonk[0m
+[1;47mmonk[0m | [2;47mmonk[0m | [4;47mmonk[0m
+```
