@@ -1,29 +1,41 @@
-![image](https://github.com/user-attachments/assets/478efa0f-f7c6-47e7-9c9d-91b63cc73a72)
-
+![image](https://github.com/user-attachments/assets/a5731739-e1f0-42df-ac23-6ae898b5867e)
 
 codeblock for ANSI formatting in discord messages
 
 
 ```ansi
-[1;1mmonk[0m | [2;1mmonk[0m | [4;1mmonk[0m
-[1;2mmonk[0m | [2;2mmonk[0m | [4;2mmonk[0m
-[1;4mmonk[0m | [2;4mmonk[0m 
+Text format: 1 is bold, 2 is thin, and 4 is underscore
+[1;1m 1;1m [0m | [1;4m 1;4m [0m | [2;2m 2;2m [0m | [4;2m 4;2m [0m
 
-[1;30mmonk[0m | [2;30mmonk[0m | [4;30mmonk[0m
-[1;31mmonk[0m | [2;31mmonk[0m | [4;31mmonk[0m
-[1;32mmonk[0m | [2;32mmonk[0m | [4;32mmonk[0m
-[1;33mmonk[0m | [2;33mmonk[0m | [4;33mmonk[0m
-[1;34mmonk[0m | [2;34mmonk[0m | [4;34mmonk[0m
-[1;35mmonk[0m | [2;35mmonk[0m | [4;35mmonk[0m
-[1;36mmonk[0m | [2;36mmonk[0m | [4;36mmonk[0m
-[1;37mmonk[0m | [2;37mmonk[0m | [4;37mmonk[0m
+Foreground, 30 to 37:
+[1;30m 1;30m[0m | [2;30m 2;30m[0m | [4;30m 4;30m [0m
+[1;31m 1;31m[0m | [2;31m 2;31m[0m | [4;31m 4;31m [0m
+[1;32m 1;32m[0m | [2;32m 2;32m[0m | [4;32m 4;32m [0m
+[1;33m 1;33m[0m | [2;33m 2;33m[0m | [4;33m 4;33m [0m
+[1;34m 1;34m[0m | [2;34m 2;34m[0m | [4;34m 4;34m [0m
+[1;35m 1;35m[0m | [2;35m 2;35m[0m | [4;35m 4;35m [0m
+[1;36m 1;36m[0m | [2;36m 2;36m[0m | [4;36m 4;36m [0m
+[1;37m 1;37m[0m | [2;37m 2;37m[0m | [4;37m 4;37m [0m
 
-[1;40mmonk[0m | [2;40mmonk[0m | [4;40mmonk[0m
-[1;41mmonk[0m | [2;41mmonk[0m | [4;41mmonk[0m
-[1;42mmonk[0m | [2;42mmonk[0m | [4;42mmonk[0m
-[1;43mmonk[0m | [2;43mmonk[0m | [4;43mmonk[0m
-[1;44mmonk[0m | [2;44mmonk[0m | [4;44mmonk[0m
-[1;45mmonk[0m | [2;45mmonk[0m | [4;45mmonk[0m
-[1;46mmonk[0m | [2;46mmonk[0m | [4;46mmonk[0m
-[1;47mmonk[0m | [2;47mmonk[0m | [4;47mmonk[0m
+Background, 40 to 47:
+[1;40m 1;40m[0m | [2;40m 2;40m[0m | [4;40m 4;40m [0m
+[1;41m 1;41m[0m | [2;41m 2;41m[0m | [4;41m 4;41m [0m
+[1;42m 1;42m[0m | [2;42m 2;42m[0m | [4;42m 4;42m [0m
+[1;43m 1;43m[0m | [2;43m 2;43m[0m | [4;43m 4;43m [0m
+[1;44m 1;44m[0m | [2;44m 2;44m[0m | [4;44m 4;44m [0m
+[1;45m 1;45m[0m | [2;45m 2;45m[0m | [4;45m 4;45m [0m
+[1;46m 1;46m[0m | [2;46m 2;46m[0m | [4;46m 4;46m [0m
+[1;47m 1;47m[0m | [2;47m 2;47m[0m | [4;47m 4;47m [0m
+
+
+Mixed. First column is text format, second is background, third is foreground:
+[1;40;30m 1;40;30m [0m | [2;40;30m 2;40;30m [0m | [4;40;30m 4;40;30m [0m
+[1;41;31m 1;41;31m [0m | [2;41;31m 2;41;31m [0m | [4;41;31m 4;41;31m [0m
+[1;42;32m 1;42;32m [0m | [2;42;32m 2;42;32m [0m | [4;42;32m 4;42;32m [0m
+[1;43;33m 1;43;33m [0m | [2;43;33m 2;43;33m [0m | [4;43;33m 4;43;33m [0m
+[1;44;34m 1;44;34m [0m | [2;44;34m 2;44;34m [0m | [4;44;34m 4;44;34m [0m
+[1;45;35m 1;45;35m [0m | [2;45;35m 2;45;35m [0m | [4;45;35m 4;45;35m [0m
+[1;46;36m 1;46;36m [0m | [2;46;36m 2;46;36m [0m | [4;46;36m 4;46;36m [0m
+[1;47;37m 1;47;37m [0m | [2;47;37m 2;47;37m [0m | [4;47;37m 4;47;37m [0m
+
 ```
